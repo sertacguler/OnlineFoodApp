@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swiperefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/campaign_slider"
+            layout="@layout/layout_image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.5" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/arranger"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6.5"
+            android:background="@color/grey">
+
+            <Button
+                android:id="@+id/mealbtn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/btn_meal"
+                android:drawableStart="@drawable/restaurant"
+                android:drawablePadding="-30dp"
+                android:onClick="show"
+                android:paddingStart="10dp"
+                android:text="@string/btn_foods"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintHeight_percent="0.60"
+                app:layout_constraintStart_toStartOf="@+id/arranger"
+                app:layout_constraintTop_toTopOf="@+id/arranger"
+                app:layout_constraintWidth_percent="0.45" />
+
+            <Button
+                android:id="@+id/previousordersbtn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/btn_prevorders"
+                android:onClick="show"
+                android:text="@string/btn_previousorders"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/arranger"
+                app:layout_constraintHeight_percent="0.40"
+                app:layout_constraintStart_toStartOf="@+id/arranger"
+                app:layout_constraintWidth_percent="0.45" />
+
+            <Button
+                android:id="@+id/ordersbtn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/btn_orders"
+                android:onClick="show"
+                android:text="@string/btn_orders"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/arranger"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintTop_toTopOf="@+id/arranger"
+                app:layout_constraintWidth_percent="0.55" />
+
+            <Button
+                android:id="@+id/cartbtn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:background="@drawable/btn_cart"
+                android:onClick="show"
+                android:text="@string/btn_cart"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/loginbtn"
+                app:layout_constraintEnd_toEndOf="@+id/arranger"
+                app:layout_constraintHeight_percent="0.20"
+                app:layout_constraintTop_toBottomOf="@+id/ordersbtn"
+                app:layout_constraintWidth_percent="0.55" />
+
+            <Button
+                android:id="@+id/loginbtn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/btn_login"
+                android:onClick="show"
+                android:text="@string/btn_login"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="@+id/arranger"
+                app:layout_constraintEnd_toEndOf="@+id/arranger"
+                app:layout_constraintHeight_percent="0.55"
+                app:layout_constraintWidth_percent="0.55" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

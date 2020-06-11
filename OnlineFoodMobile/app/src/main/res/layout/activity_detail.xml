@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/meal_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="0.50"
+        android:background="@drawable/txt_border"
+        android:contentDescription="@string/meal_image_here"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/meal_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center|start"
+            android:paddingStart="20dp"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0.10"
+            android:gravity="center|end"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="1 Porsiyon"
+            android:textColor="@color/grey"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        android:background="@drawable/backg_addcart"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/meal_price"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_gravity="end|center"
+            android:layout_weight="0.8"
+            android:textColor="@color/turkuaz"
+            android:textColorHighlight="@color/primary"
+            android:textColorHint="@color/colorYellow"
+            android:textSize="40sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/btn_addcart"
+            android:text="Sepete Ekle"
+            android:textColor="@color/icons" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="0.10"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:text="Detaylar"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/meal_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="0.25"
+        android:paddingStart="5dp"
+        android:textSize="18sp" />
+</LinearLayout>

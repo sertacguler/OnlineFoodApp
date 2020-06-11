@@ -1,0 +1,141 @@
+# OnlineFoodBackend
+
+`Veritabanı Scriptleri`
+```
+	CREATE TABLE "CONTACT" 
+   (	
+    "CT_ID" NUMBER(19,0) NOT NULL ENABLE, 
+	"ADDRESS" VARCHAR2(255 CHAR), 
+	"EMAIL" VARCHAR2(255 CHAR), 
+	"PHONE" VARCHAR2(255 CHAR), 
+	 PRIMARY KEY ("CT_ID")
+    );
+	INSERT INTO CONTACT (CT_ID,address,email,phone) VALUES (1,'Ankara', 'sertacguler1@gmail.com', '05554443322');
+   
+   
+    CREATE TABLE"CUSTOMER" 
+   (	
+   "ID" NUMBER(19,0) NOT NULL ENABLE, 
+	"ADDRESS" VARCHAR2(255 CHAR), 
+	"EMAIL" VARCHAR2(255 CHAR), 
+	"NAME" VARCHAR2(255 CHAR), 
+	"PASSWORD" VARCHAR2(255 CHAR), 
+	"PHONE" VARCHAR2(255 CHAR), 
+	"SURNAME" VARCHAR2(255 CHAR), 
+	 PRIMARY KEY ("ID")
+    );
+	INSERT INTO CUSTOMER (ID, address, email, name, password, phone, surname) VALUES (1, 'Ankara', 'sertacguler1@gmail.com', 'sertac', '$2a$10$4j3s7Br1.Kg1ihtVfAV/y.VliPCRBAYBdkTQH7WSn3mhC0ocqHxeq', '123456789', 'guler');
+	INSERT INTO CUSTOMER (ID, address, email, name, password, phone, surname) VALUES (2, 'Istanbul', 'burak', 'burak@gmail.com', '$2a$10$4j3s7Br1.Kg1ihtVfAV/y.VliPCRBAYBdkTQH7WSn3mhC0ocqHxeq', '123456789', 'yılmaz');
+
+
+	CREATE TABLE "EMPLOYEE" 
+   (	
+    "EMP_ID" NUMBER(19,0) NOT NULL ENABLE, 
+	"NAME" VARCHAR2(255 CHAR), 
+	"PASSWORD" VARCHAR2(255 CHAR), 
+	"SURNAME" VARCHAR2(255 CHAR), 
+	"USERNAME" VARCHAR2(255 CHAR), 
+	 PRIMARY KEY ("EMP_ID")
+    );
+	INSERT INTO EMPLOYEE (EMP_ID, name, password, surname, USERNAME) VALUES (1, 'mesut', '$2a$10$Ojm9B05Bt3uyX1.la7d80.JOteZQ7IUUNuiGpF4UNA//bAuJaCcbC', 'can', 'mesutcan');
+   
+   
+    CREATE TABLE "MEAL" 
+   (	
+    "CODE" VARCHAR2(255 CHAR) NOT NULL ENABLE, 
+	"DETAIL" VARCHAR2(255 CHAR), 
+	"NAME" VARCHAR2(255 CHAR), 
+	"PHOTO" VARCHAR2(255 CHAR), 
+	"PRICE" NUMBER(19,0), 
+	"EMP_ID" NUMBER(19,0), 
+	"CREATION_DATE" TIMESTAMP (6), 
+	"CAMPAIGN" NUMBER(1,0), 
+	 PRIMARY KEY ("CODE")
+	 CONSTRAINT "MEAL_CHK1" CHECK (CAMPAIGN IN (1,0)) ENABLE, 
+	 CONSTRAINT "FKMDYICEV5YBSHUIDC12K38CAJ7" FOREIGN KEY ("EMP_ID")
+	  REFERENCES "EMPLOYEE" ("EMP_ID") ENABLE
+    );
+	INSERT INTO MEAL (CODE, detail, name, photo, price, EMP_ID, CREATION_DATE, CAMPAIGN) VALUES ('CRB1', 'Mis gibi', 'Mercimek', 'https://im.haberturk.com/2019/09/13/ver1568794591/2521922_810x458.jpg', 5, 1, TO_TIMESTAMP('07/11/2019 03:00:00,000000000'), 1);
+	INSERT INTO MEAL (CODE, detail, name, photo, price, EMP_ID, CREATION_DATE, CAMPAIGN) VALUES ('KVR1', 'Harika', 'Kavurma', 'https://i4.hurimg.com/i/hurriyet/75/750x422/5d4fca332269a20f5c723a58.jpg', 25, 1, '07/11/2019 03:00:00,000000000', 0);
+	INSERT INTO MEAL (CODE, detail, name, photo, price, EMP_ID, CREATION_DATE, CAMPAIGN) VALUES ('MNT1', 'İçi dolu dolu', 'Mantı', 'https://lezzet.blob.core.windows.net/images-xxlarge-recipe/kayseri_mantisi-51ae051e-edd3-48f1-a54b-7f728dc93461.jpg', 12, 1, '08/10/2019 03:12:00,000000000', 1);
+
+   
+   CREATE TABLE "CART" 
+   (	
+   "CART_ID" NUMBER(19,0) NOT NULL ENABLE, 
+	"STATUS" NUMBER(1,0) NOT NULL ENABLE, 
+	"TOTAL_PRICE" VARCHAR2(255 CHAR), 
+	"CUSTOMER_ID" NUMBER(19,0) NOT NULL ENABLE, 
+	 PRIMARY KEY ("CART_ID")
+	 CONSTRAINT "CART_CHK1" CHECK (STATUS IN (1,0)) ENABLE, 
+	 CONSTRAINT "FKDEBWVAD6PP1EKIQY5JTIXQBAJ" FOREIGN KEY ("CUSTOMER_ID")
+	  REFERENCES "CUSTOMER" ("ID") ENABLE
+    );
+    
+     CREATE TABLE "CART_MEAL" 
+   (	
+	"CART_ID" NUMBER(19,0) NOT NULL ENABLE, 
+	"CODE" VARCHAR2(255 CHAR) NOT NULL ENABLE, 
+	CONSTRAINT "FKAKX1SJ4PEAIPH90OSHG5W1PO1" FOREIGN KEY ("CODE")
+	REFERENCES "MEAL" ("CODE") ENABLE, 
+	CONSTRAINT "FK3PTI8YR2T6LHGPLM6KJB6SAOE" FOREIGN KEY ("CART_ID")
+	REFERENCES "CART" ("CART_ID") ENABLE
+   );
+   
+   
+	CREATE TABLE "ROLE" 
+   (	
+    "ROLE_ID" NUMBER(19,0) NOT NULL ENABLE, 
+	"EXPLANATION" VARCHAR2(255 CHAR), 
+	"NAME" VARCHAR2(255 CHAR), 
+	 PRIMARY KEY ("ROLE_ID")
+	);
+	INSERT INTO ROLE(ROLE_ID, EXPLANATION, NAME) VALUES (1, 'Owner of the restaurant', 'RESTAURANT_OWNER');
+	
+	
+	 CREATE TABLE "EMPLOYEE_ROLE" 
+   (	"EMP_ID" NUMBER NOT NULL ENABLE, 
+	"ROLE_ID" NUMBER NOT NULL ENABLE, 
+	"ACTIVE" NUMBER(1,0), 
+	"SINCE" TIMESTAMP (6) NOT NULL ENABLE, 
+	 CONSTRAINT "EMPLOYEE_ROLE_CHK1" CHECK (ACTIVE IN(1,0)) ENABLE, 
+	 CONSTRAINT "EMPLOYEE_ROLE_FK1" FOREIGN KEY ("EMP_ID")
+REFERENCES "EMPLOYEE" ("EMP_ID") ENABLE, 
+	 CONSTRAINT "EMPLOYEE_ROLE_FK2" FOREIGN KEY ("ROLE_ID")
+	  REFERENCES "ROLE" ("ROLE_ID") ENABLE
+   );
+   
+   INSERT INTO EMPLOYEE_ROLE (EMP_ID,ROLE_ID,ACTIVE,SINCE) VALUES (1, 1, 1, '07/11/2019 03:00:00,000000000');
+   
+   CREATE SEQUENCE "CART_SEQUENCE"  
+MINVALUE 1 
+MAXVALUE 9999999999999999999999999999 
+INCREMENT BY 1 
+START WITH 1001 
+NOCACHE  NOORDER  NOCYCLE  NOKEEP  NOSCALE  GLOBAL ;
+
+
+INSERT INTO "EMPLOYEE" (EMP_ID, NAME, PASSWORD, SURNAME, USERNAME) VALUES ('2', 'mahmut', '$2a$10$Ojm9B05Bt3uyX1.la7d80.JOteZQ7IUUNuiGpF4UNA//bAuJaCcbC', 'tuncer', 'mahmutt')
+
+INSERT INTO "EMPLOYEE" (EMP_ID, NAME, PASSWORD, SURNAME, USERNAME) VALUES ('3', 'cem', '$2a$10$Ojm9B05Bt3uyX1.la7d80.JOteZQ7IUUNuiGpF4UNA//bAuJaCcbC', 'yılmaz', 'cemyılmaz')
+
+INSERT INTO "EMPLOYEE_ROLE" (EMP_ID, ROLE_ID, ACTIVE, SINCE) VALUES ('2', '1', '1', TO_TIMESTAMP('2019-09-19 19:46:31.000000000', 'YYYY-MM-DD HH24:MI:SS.FF'))
+INSERT INTO "EMPLOYEE_ROLE" (EMP_ID, ROLE_ID, ACTIVE, SINCE) VALUES ('3', '1', '1', TO_TIMESTAMP('2019-09-19 19:46:31.000000000', 'YYYY-MM-DD HH24:MI:SS.FF'))
+
+   
+  ```
+  
+  
+  
+  
+  Tablolar oluşturulduktan sonra application.properties dosyasından username ve password ayarlayınız.
+  
+  ```sh
+  spring.datasource.username=sys as SYSDBA
+  spring.datasource.password=123
+  ```
+  
+  Bu projenin frontendinde Reactjs Ve Android teknolojileri kullanıldı.
+  > Front [Admin](https://github.com/felusdomesticus/onlinefoodappfrntend), [Customer](https://github.com/sertacguler/OnlineFoodCustomerFront) ve [MobileApp](https://github.com/sertacguler/MobileFoodApp)
+  
+  Backend [http://localhost:8034/]

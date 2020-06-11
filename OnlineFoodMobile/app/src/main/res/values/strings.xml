@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MobileFoodApp</string>
+    <string name="to">TO</string>
+    <string name="subject">SUBJECT</string>
+    <string name="message">MESSAGE</string>
+    <string name="send">SEND</string>
+    <string name="reminder">Reminder name</string>
+    <string name="done">DONE</string>
+    <string name="meal_image_here">Meal Image Here</string>
+    <string name="preference_file_key">BILGEADAMPREF</string>
+    <string name="orders">Sipariş Durumu</string>
+    <string name="meal_menu">Yemekler</string>
+    <string name="previousorders">Önceki \n Siparişlerim</string>
+    <string name="login">Giriş/Çıkış</string>
+    <string name="campaign">Campaign</string>
+
+    <string name="btn_foods">Yemekler</string>
+    <string name="btn_previousorders">Önceki \n Siparişler</string>
+    <string name="btn_orders">Sipariş Durumu</string>
+    <string name="btn_login">Giriş/Çıkış</string>
+    <string name="campaign_meal">Campaign Meal</string>
+    <string name="btn_cart">Sepetim</string>
+</resources>

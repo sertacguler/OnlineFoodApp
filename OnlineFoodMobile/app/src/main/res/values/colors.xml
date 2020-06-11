@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="primary">#4CAF50</color>
+    <color name="primary_dark">#388E3C</color>
+    <color name="primary_light">#C8E6C9</color>
+    <color name="accent">#03A9F4</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
+    <color name="meal_name_color">#DE000000</color>
+    <color name="meal_description_color">#8A000000</color>
+
+    <color name="colorPastelGreen">#99D07E</color>
+    <color name="colorYellow">#FFEB3B</color>
+    <color name="colorYellow2">#FFC107</color>
+    <color name="colorPastelRed">#D85252</color>
+    <color name="grey">#BDBDBD</color>
+    <color name="cloudblue">#03A9F4</color>
+    <color name="darkred_ripple">#F14444</color>
+
+    <color name="black">#000000</color>
+
+    <color name="turkuaz">#28d6c0</color>
+
+    </resources>
